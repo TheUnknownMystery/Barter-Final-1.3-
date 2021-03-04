@@ -23,7 +23,7 @@ export default class Settings extends React.Component {
 
   getCurrentUserDetails = () => {
 
-    var user = firebase.auth().currentUser;
+     var user = firebase.auth().currentUser;
     var email = user.email
 
     db.collection('UserInfo').where('Email', "==", email).get()
@@ -52,7 +52,7 @@ export default class Settings extends React.Component {
   updateUserDetail = () => {
 
     var Document = this.state.DocumentID
-    
+
     db.collection('UserInfo').doc(Document).update({
 
       FirstName: this.state.FirstName,
@@ -62,7 +62,7 @@ export default class Settings extends React.Component {
       ContactNumber: this.state.ContactNumber,
 
     })
-    
+
     alert("Updated Account")
   }
 
@@ -147,7 +147,7 @@ export default class Settings extends React.Component {
 
             }}>
 
-              <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 20,fontSize: 18 }}>Save</Text>
+              <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 20, fontSize: 18 }}>Save</Text>
 
             </TouchableOpacity>
           </View>
