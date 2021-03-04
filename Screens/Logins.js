@@ -19,6 +19,7 @@ export default class login extends React.Component {
       FirstName: '',
       LastName: '',
       isVisible: false
+
     }
   }
 
@@ -60,6 +61,7 @@ export default class login extends React.Component {
                 placeholder="Email"
                 keyboardType='email-address'
                 style={styles.TextInputStyle}
+
                 onChangeText={(text) => {
                   this.setState({ Email: text })
                 }}
@@ -106,6 +108,7 @@ export default class login extends React.Component {
                   this.setState({ ContactNumber: text })
                 }}
               />
+
             </KeyboardAvoidingView>
 
             <TouchableOpacity style={{ alignItems: 'center', alignSelf: 'center', borderRadius: 4, marginTop: 40, height: '5%', width: '50%', borderWidth: 2, backgroundColor: 'lightpink' }} onPress={() => {
@@ -133,6 +136,7 @@ export default class login extends React.Component {
             </TouchableOpacity>
 
           </ScrollView>
+
         </View>
       </Modal>
     )
@@ -163,7 +167,7 @@ export default class login extends React.Component {
 
           return Alert.alert(
 
-            "UserAdded",
+            "UserAdded(Account created)",
             "",
             [
 
@@ -176,8 +180,8 @@ export default class login extends React.Component {
         .catch(function (error) {
 
           var errorMessage = error.message;
-          //console.log(errorMessage)
           return alert(errorMessage);
+
         })
     }
   }
@@ -194,7 +198,7 @@ export default class login extends React.Component {
 
           alert("Login Sucessful")
           this.props.navigation.navigate("Drawer")
-          
+
 
         }
       }
@@ -253,8 +257,8 @@ export default class login extends React.Component {
 
           <TouchableOpacity style={styles.loginbutton} onPress={() => {
 
-            //this.UserSignIn(this.state.Email, this.state.Password)
             this.setState({ isVisible: true })
+
           }}>
 
             <Text style={{ alignSelf: 'center' }}>SignIn</Text>
@@ -335,6 +339,4 @@ const styles = StyleSheet.create({
     width: '60%'
 
   }
-
-
 })

@@ -41,11 +41,16 @@ export default class Home extends React.Component {
 
                 <ListItem bottomDivider>
 
-                  <TouchableOpacity style={{ backgroundColor: 'orange', width: 70, borderWidth: 2, borderColor: 'grey' }}>
+                  <TouchableOpacity style={{ backgroundColor: 'orange', width: 70, borderWidth: 2, borderColor: 'grey' }} onPress={() => {
 
-                    <Text style = {{fontSize: 'bold' , alignSelf: 'center', fontWeight: 'bold'}}>Exchange</Text>
+                    this.props.navigation.navigate('Trade')
+
+                  }}>
+
+                    <Text style={{ fontSize: 'bold', alignSelf: 'center', fontWeight: 'bold' }}>Exchange</Text>
 
                   </TouchableOpacity>
+
 
                   <ListItem.Content>
 
@@ -63,13 +68,11 @@ export default class Home extends React.Component {
                   </ListItem.Content>
 
                 </ListItem>
-
               </View>
             )
-          }} />
+          }}/>
 
       </View>
-
     )
   }
 }

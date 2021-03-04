@@ -52,17 +52,18 @@ export default class Settings extends React.Component {
   updateUserDetail = () => {
 
     var Document = this.state.DocumentID
-
+    
     db.collection('UserInfo').doc(Document).update({
 
-
       FirstName: this.state.FirstName,
-      SecondName: this.state.SecondName,
+      LastName: this.state.SecondName,
       Address: this.state.Address,
       Email: this.state.Email,
       ContactNumber: this.state.ContactNumber,
 
     })
+    
+    alert("Updated Account")
   }
 
   componentDidMount = () => {
@@ -73,82 +74,83 @@ export default class Settings extends React.Component {
 
   render() {
     return (
+      <View style={{ flex: 1, backgroundColor: 'lightgrey' }}>
+        <View style={{ borderWidth: 3, marginLeft: 200, marginTop: 40, marginRight: 200, borderRadius: 9, backgroundColor: 'white' }}>
 
-      <View style={{ width: 400, alignSelf: 'center', marginLeft: 200 }}>
+          <TextInput
 
-        <TextInput
+            placeholder='FirstName'
+            style={styles.TextInputStyle}
 
-          placeholder='FirstName'
-          style={styles.TextInputStyle}
+            onChangeText={(text) => {
 
-          onChangeText={(text) => {
+              this.setState({ FirstName: text })
 
-            this.setState({ FirstName: text })
+            }}
 
-          }}
+            value={this.state.FirstName}
+          />
+          <TextInput
 
-          value={this.state.FirstName}
-        />
-        <TextInput
+            placeholder='SecondName'
+            style={styles.TextInputStyle}
 
-          placeholder='SecondName'
-          style={styles.TextInputStyle}
+            onChangeText={(text) => {
 
-          onChangeText={(text) => {
+              this.setState({ SecondName: text })
 
-            this.setState({ SecondName: text })
+            }}
 
-          }}
+            value={this.state.SecondName}
+          />
 
-          value={this.state.SecondName}
-        />
+          <TextInput
 
-        <TextInput
+            placeholder='Address'
+            style={styles.TextInputStyle}
 
-          placeholder='Address'
-          style={styles.TextInputStyle}
+            onChangeText={(text) => {
 
-          onChangeText={(text) => {
+              this.setState({ Address: text })
 
-            this.setState({ Address: text })
+            }}
 
-          }}
+            value={this.state.Address}
+          />
 
-          value={this.state.Address}
-        />
+          <TextInput
 
-        <TextInput
+            placeholder='Email'
+            style={styles.TextInputStyle}
 
-          placeholder='Email'
-          style={styles.TextInputStyle}
+            value={this.state.Email}
+          />
 
-          value={this.state.Email}
-        />
+          <TextInput
 
-        <TextInput
+            placeholder='Contact Number'
+            style={styles.TextInputStyle}
 
-          placeholder='Contact Number'
-          style={styles.TextInputStyle}
+            onChangeText={(text) => {
 
-          onChangeText={(text) => {
+              this.setState({ ContactNumber: text })
 
-            this.setState({ ContactNumber: text })
+            }}
 
-          }}
+            value={this.state.ContactNumber}
+          />
 
-          value={this.state.ContactNumber}
-        />
+          <View>
+            <TouchableOpacity style={{ alignSelf: 'center', marginTop: 30, height: '70%', width: '40%', borderWidth: 2, borderRadius: 6, backgroundColor: 'pink' }} onPress={() => {
 
-        <View>
-          <TouchableOpacity style={{ alignSelf: 'center', marginTop: 50, width: '60%', borderWidth: 2, borderRadius: 6, backgroundColor: 'pink' }} onPress={() => {
+              this.updateUserDetail()
 
-            this.updateUserDetail()
+            }}>
 
-          }}>
+              <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 20,fontSize: 18 }}>Save</Text>
 
-            <Text style={{ alignSelf: 'center' }}>Save</Text>
-
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
 
@@ -163,9 +165,8 @@ const styles = StyleSheet.create({
 
     alignSelf: 'center',
     borderBottomWidth: 1.0,
-    width: "100%",
+    width: 400,
     marginTop: 100
-
 
   }
 

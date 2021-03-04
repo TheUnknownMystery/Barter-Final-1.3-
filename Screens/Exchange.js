@@ -8,150 +8,147 @@ import firebase from 'firebase'
 export default class Exchange extends React.Component {
 
 
- AddItem = async (ItemName, ItemDescription) => {
+  AddItem = async (ItemName, ItemDescription) => {
 
-  if (ItemName && ItemDescription) {
+    if (ItemName && ItemDescription) {
 
-   db.collection("AddedItem").add({
+      db.collection("AddedItem").add({
 
-    'Item_Name': this.state.ItemName,
-    'Item_Definition': this.state.ItemDescription
+        'Item_Name': this.state.ItemName,
+        'Item_Definition': this.state.ItemDescription
 
-   })
-  }
- }
-
- constructor() {
-  super()
-
-  this.state = {
-
-   ItemName: '',
-   ItemDescription: ''
-
+      })
+    }
   }
 
- }
- render() {
+  constructor() {
+    super()
 
-  return (
+    this.state = {
 
-   <View style={{ alignSelf: 'center', marginTop: 100 }}>
-   
-    <View>
+      ItemName: '',
+      ItemDescription: ''
 
-     <Text style={{ alignItems: 'center', fontWeight: 'bold', fontSize: 40, alignSelf: 'center' }}>Add Item To Donate</Text>
+    }
 
-    </View>
+  }
+  render() {
 
-    <View>
+    return (
 
-     <TextInput
+      <View style={{ alignSelf: 'center', marginTop: 80, borderRadius: 4, borerRadius: 0.3, paddingBottom: 60, paddingTop: 50, paddingLeft: 50, paddingRight: 50, backgroundColor: 'lightgrey' }}>
 
-      style={styles.TextInputStyle}
-      placeholder="Item Name"
-      maxLength={10}
+        <View>
 
-      onChangeText={(text) => {
+          <Text style={{ alignItems: 'center', fontWeight: 'bold', fontSize: 40, alignSelf: 'center' }}>Add Item To Donate</Text>
 
-       this.setState({ ItemName: text })
+        </View>
 
-      }}
-     />
+        <View>
 
-    </View>
+          <TextInput
 
-    <View>
+            style={styles.TextInputStyle}
+            placeholder="Item Name"
+            maxLength={20}
 
-     <TextInput
+            onChangeText={(text) => {
 
-      style={styles.TextInputStyleDescription}
-      placeholder="Description Of the Item"
-      maxLength={150}
+              this.setState({ ItemName: text })
 
-      onChangeText={(text) => {
+            }}
+          />
 
-       this.setState({ ItemDescription: text })
+        </View>
 
-      }}
-     />
+        <View>
 
-    </View>
+          <TextInput
 
-    <View>
+            style={styles.TextInputStyleDescription}
+            placeholder="Description Of the Item"
+            maxLength={110}
 
-     <TouchableOpacity style={styles.SubmitButton} onPress={() => {
+            onChangeText={(text) => {
 
-      this.AddItem(this.state.ItemName, this.state.ItemDescription)
-       alert("Donation Submitted!")
-     }}>
+              this.setState({ ItemDescription: text })
 
-      <Text style={{ alignSelf: 'center', fontWeight: 'bold' }}>Submit</Text>
+            }}
+          />
 
-     </TouchableOpacity>
+        </View>
 
+        <View>
 
-    </View>
-   </View>
+          <TouchableOpacity style={styles.SubmitButton} onPress={() => {
 
-  )
- }
+            this.AddItem(this.state.ItemName, this.state.ItemDescription)
+            alert("Donation Submitted!! thank you for Donating")
+
+          }}>
+
+            <Text style={{ alignSelf: 'center', fontWeight: 'bold' }}>Submit</Text>
+
+          </TouchableOpacity>
+
+        </View>
+      </View>
+
+    )
+  }
 }
 
 const styles = StyleSheet.create({
 
- HomePage: {
+  HomePage: {
 
-  alignSelf: 'center',
-  alignItems: 'center',
-  fontWeight: 'bold',
-  justifyContent: 'center',
-  fontSize: 60
+    alignSelf: 'center',
+    alignItems: 'center',
+    fontWeight: 'bold',
+    justifyContent: 'center',
+    fontSize: 60
 
- },
+  },
 
- TextInputStyle: {
+  TextInputStyle: {
 
-  alignSelf: 'center',
-  alignItems: 'center',
-  borderWidth: 3.0,
-  borderRadius: 4,
-  borderColor: 'lightpink',
-  marginTop: 100,
-  width: 300,
-  height: 39,
- },
+    alignSelf: 'center',
+    alignItems: 'center',
+    borderWidth: 3.0,
+    borderRadius: 4,
+    borderColor: 'black',
+    marginTop: 100,
+    width: 300,
+    height: 39,
+  },
 
- TextInputStyleDescription: {
+  TextInputStyleDescription: {
 
-  height: 100,
-  borderRadius: 8,
-  borderColor: 'pink',
-  alignSelf: 'center',
-  alignItems: 'center',
-  width: '30%',
-  marginTop: 20,
-  height: 200,
-  width: 300,
-  borderWidth: 3.0,
-  paddingLeft: 4,
-  fontWeight: 'bold'
- },
+    height: 100,
+    borderRadius: 8,
+    borderColor: 'black',
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: '30%',
+    marginTop: 20,
+    height: 200,
+    width: 300,
+    borderWidth: 3.0,
+    paddingLeft: 4,
+    fontWeight: 'bold'
+  },
 
- SubmitButton: {
+  SubmitButton: {
 
-  alignSelf: 'center',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderWidth: 2,
-  borderRadius: 3,
-  borderColor: '#FAA353',
-  marginTop: 10,
-  width: '20%',
-  height: 30,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderRadius: 3,
+    borderColor: '#FAA353',
+    marginTop: 10,
+    width: '20%',
+    height: 30,
 
-
-
- }
-
+  }
 })
