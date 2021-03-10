@@ -3,7 +3,7 @@ import { BottomTab } from './AppNavigator'
 import SideDrawer from './SideDrawer'
 import login from '../Screens/Logins'
 import Settings from '../Screens/Settings'
-
+import MyBarter from '../Screens/MyBarter'
 
 export const AppDrawer = createDrawerNavigator(
  {
@@ -17,9 +17,15 @@ export const AppDrawer = createDrawerNavigator(
 
   Settings: {
 
-  screen: Settings
+   screen: Settings
 
   },
+
+  MyBarter: {
+
+   screen: MyBarter
+
+  }
  },
  {
   contentComponent: SideDrawer

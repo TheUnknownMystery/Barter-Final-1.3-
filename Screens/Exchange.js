@@ -4,21 +4,33 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { Header } from 'react-native-elements'
 import db from '../config'
 import firebase from 'firebase'
+import { DatePickerIOSBase } from 'react-native'
 
 export default class Exchange extends React.Component {
 
-
   AddItem = async (ItemName, ItemDescription) => {
 
+    var RandomID = this.createUniqueID();
+    var User_ID = this.state.UserID;
+
     if (ItemName && ItemDescription) {
+
 
       db.collection("AddedItem").add({
 
         'Item_Name': this.state.ItemName,
-        'Item_Definition': this.state.ItemDescription
+        'Item_Definition': this.state.ItemDescription,
+        'ItemId': RandomID,
+        'UserID': User_ID
 
       })
     }
+  }
+
+  createUniqueID = () => {
+
+    return Math.random().toString(36).substring(7);
+
   }
 
   constructor() {
@@ -27,10 +39,9 @@ export default class Exchange extends React.Component {
     this.state = {
 
       ItemName: '',
-      ItemDescription: ''
-
+      ItemDescription: '',
+      UserID: firebase.auth().currentUser.email
     }
-
   }
   render() {
 
@@ -120,6 +131,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     width: 300,
     height: 39,
+    backgroundColor: 'white'
   },
 
   TextInputStyleDescription: {
@@ -135,7 +147,8 @@ const styles = StyleSheet.create({
     width: 300,
     borderWidth: 3.0,
     paddingLeft: 4,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    backgroundColor: 'white'
   },
 
   SubmitButton: {

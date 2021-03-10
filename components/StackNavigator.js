@@ -10,7 +10,7 @@ export const StackNavigator = createStackNavigator({
 
   navigationOptions: {
 
-
+   headerShown: true
 
   },
  },

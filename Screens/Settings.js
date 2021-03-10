@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import firebase from 'firebase'
 import db from '../config'
-import { Touchable } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+
 export default class Settings extends React.Component {
 
   constructor() {
@@ -23,24 +22,22 @@ export default class Settings extends React.Component {
 
   getCurrentUserDetails = () => {
 
-     var user = firebase.auth().currentUser;
-    var email = user.email
+    var user = firebase.auth().currentUser;
+    var Email = user.email
 
-    db.collection('UserInfo').where('Email', "==", email).get()
+    db.collection('UserInfo').where("Email", '==', Email).get()
 
       .then(snapshot => {
-
+        
         snapshot.forEach(doc => {
-
-          var Data = doc.data()
 
           this.setState({
 
-            FirstName: Data.FirstName,
-            SecondName: Data.LastName,
-            Address: Data.Address,
-            Email: Data.Email,
-            ContactNumber: Data.Contact,
+            FirstName: doc.data().FirstName,
+            SecondName: doc.data().LastName,
+            Address: doc.data().Address,
+            Email: doc.data().Email,
+            ContactNumber: doc.data().Contact,
             DocumentID: doc.id
 
           })
@@ -51,9 +48,8 @@ export default class Settings extends React.Component {
 
   updateUserDetail = () => {
 
-    var Document = this.state.DocumentID
 
-    db.collection('UserInfo').doc(Document).update({
+    db.collection('UserInfo').doc(this.state.DocumentID).update({
 
       FirstName: this.state.FirstName,
       LastName: this.state.SecondName,
@@ -75,7 +71,7 @@ export default class Settings extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'lightgrey' }}>
-        <View style={{ borderWidth: 3, marginLeft: 200, marginTop: 40, marginRight: 200, borderRadius: 9, backgroundColor: 'white' }}>
+        <View>
 
           <TextInput
 
@@ -141,13 +137,13 @@ export default class Settings extends React.Component {
           />
 
           <View>
-            <TouchableOpacity style={{ alignSelf: 'center', marginTop: 30, height: '70%', width: '40%', borderWidth: 2, borderRadius: 6, backgroundColor: 'pink' }} onPress={() => {
+            <TouchableOpacity style={{ alignSelf: 'center', marginTop: 30, height: '30%', width: '40%', borderWidth: 2, borderRadius: 6, backgroundColor: 'pink' }} onPress={() => {
 
               this.updateUserDetail()
 
             }}>
 
-              <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 20, fontSize: 18 }}>Save</Text>
+              <Text style={{ alignSelf: 'center', fontWeight: 'bold', marginTop: 4, fontSize: 18 }}>Save</Text>
 
             </TouchableOpacity>
           </View>
@@ -165,7 +161,7 @@ const styles = StyleSheet.create({
 
     alignSelf: 'center',
     borderBottomWidth: 1.0,
-    width: 400,
+    width: 200,
     marginTop: 100
 
   }

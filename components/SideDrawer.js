@@ -12,8 +12,8 @@ export default class SideDrawer extends React.Component {
 
      <DrawerItems {...this.props} />
 
-     <View style={{ marginTop: 200, marginLeft: -200 }}>
-      <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => {
+     <View style={{ marginTop: 500, marginLeft: -200 }}>
+      <TouchableOpacity style={{ alignSelf: 'center' , fontWeight: '500%' }} onPress={() => {
 
        this.props.navigation.navigate("LoginScreen")
        firebase.auth().signOut()
