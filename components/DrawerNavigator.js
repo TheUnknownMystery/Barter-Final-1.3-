@@ -4,7 +4,7 @@ import SideDrawer from './SideDrawer'
 import login from '../Screens/Logins'
 import Settings from '../Screens/Settings'
 import MyBarter from '../Screens/MyBarter'
-
+import NotificationScreen from '../Screens/NotificationScreen'
 export const AppDrawer = createDrawerNavigator(
  {
 
@@ -25,7 +25,14 @@ export const AppDrawer = createDrawerNavigator(
 
    screen: MyBarter
 
-  }
+  },
+
+  Notification: {
+
+   screen: NotificationScreen
+
+  },
+
  },
  {
   contentComponent: SideDrawer

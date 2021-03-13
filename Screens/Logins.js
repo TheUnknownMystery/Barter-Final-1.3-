@@ -32,7 +32,7 @@ export default class login extends React.Component {
           <ScrollView style={{ width: '100%' }}>
             <KeyboardAvoidingView style={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
 
-              <Text style={styles.Title}>Registration Foarm</Text>
+              <Text style={styles.Title}>Register</Text>
 
               <TextInput
 
@@ -111,7 +111,7 @@ export default class login extends React.Component {
 
             </KeyboardAvoidingView>
 
-            <TouchableOpacity style={{ alignItems: 'center', alignSelf: 'center', borderRadius: 4, marginTop: 40, height: '5%', width: '50%', borderWidth: 2, backgroundColor: 'lightpink' }} onPress={() => {
+            <TouchableOpacity style={{ alignItems: 'center', alignSelf: 'center', borderRadius: 7, marginTop: 40, height: '5%', width: '50%', borderWidth: 2, backgroundColor: 'lightpink' }} onPress={() => {
 
               this.UserSignIn(this.state.Email, this.state.Password, this.state.ConfirmPassword)
 
@@ -121,7 +121,7 @@ export default class login extends React.Component {
 
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ alignItems: 'center', alignSelf: 'center', borderRadius: 6, marginTop: 20, height: '5%', width: '50%', borderWidth: 2, backgroundColor: 'lightpink' }} onPress={() => {
+            <TouchableOpacity style={{ alignItems: 'center', alignSelf: 'center', borderRadius: 7, marginTop: 20, height: '5%', width: '50%', borderWidth: 2, backgroundColor: 'lightpink' }} onPress={() => {
 
               this.setState({
 
@@ -227,7 +227,7 @@ export default class login extends React.Component {
         {this.showModal()}
         <View style={{ backgroundColor: 'white', borderRadius: 7, borderWidth: 0, marginTop: 140, paddingTop: 500, marginLeft: 30, marginRight: 30, marginLeft: 20 }}>
 
-          <Text style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: -500, fontSize: 40, color: 'orange' }}>Login Foarm</Text>
+          <Text style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: -500, fontSize: 40, color: 'orange' }}>Login or SignUp</Text>
 
           <TextInput
 

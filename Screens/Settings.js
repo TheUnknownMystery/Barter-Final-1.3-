@@ -20,24 +20,30 @@ export default class Settings extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+
+    this.getCurrentUserDetails()
+
+  }
+
   getCurrentUserDetails = () => {
 
     var user = firebase.auth().currentUser;
-    var Email = user.email
-
-    db.collection('UserInfo').where("Email", '==', Email).get()
-
+    var User_Email = user.email
+    //console.log(User_Email.toUpperCase())
+    db.collection('UserInfo').where("Email", '==', User_Email).get()
       .then(snapshot => {
-        
+
         snapshot.forEach(doc => {
 
+          var Data = doc.data()
           this.setState({
 
-            FirstName: doc.data().FirstName,
-            SecondName: doc.data().LastName,
-            Address: doc.data().Address,
-            Email: doc.data().Email,
-            ContactNumber: doc.data().Contact,
+            FirstName: Data.FirstName,
+            SecondName: Data.LastName,
+            Address: Data.Address,
+            Email: Data.Email,
+            ContactNumber: Data.Contact,
             DocumentID: doc.id
 
           })
@@ -60,12 +66,6 @@ export default class Settings extends React.Component {
     })
 
     alert("Updated Account")
-  }
-
-  componentDidMount = () => {
-
-    this.getCurrentUserDetails()
-
   }
 
   render() {

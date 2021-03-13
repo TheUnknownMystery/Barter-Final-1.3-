@@ -70,13 +70,13 @@ export default class Home extends React.Component {
                   </ListItem.Content>
 
 
-                  <TouchableOpacity style={{ backgroundColor: 'orange', width: 70, borderWidth: 2, borderColor: 'grey' }} onPress={() => {
+                  <TouchableOpacity style={{ borderRadius: 3, borderWidth: 3, backgroundColor: '#B2ACAB', width: '10%', height: '80%', borderColor: 'grey' }} onPress={() => {
 
                     this.props.navigation.navigate('Trade', { "Details": item })
 
                   }}>
 
-                    <Text style={{ fontSize: 14, alignSelf: 'center', fontWeight: 'bold' }}>Exchange</Text>
+                    <Text style={{ fontSize: 14, marginTop: 3, alignSelf: 'center', fontWeight: 'bold' }}>Exchange</Text>
 
                   </TouchableOpacity>
 

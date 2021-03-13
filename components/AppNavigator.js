@@ -19,7 +19,7 @@ export const BottomTab = createBottomTabNavigator(
 
     />,
 
-    tabBarLabel: 'HomePage'
+    tabBarLabel: 'Home'
    }
   },
   ExchangePage: {
@@ -33,7 +33,7 @@ export const BottomTab = createBottomTabNavigator(
      source={require('../assets/E.png')}
 
     />,
-    tabBarLabel: 'ExchangePage'
+    tabBarLabel: 'Exchange'
    }
   },
  },

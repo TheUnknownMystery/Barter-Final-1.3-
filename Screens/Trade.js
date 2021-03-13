@@ -33,7 +33,7 @@ export default class Trade extends React.Component {
   }
 
   getReciverDetials = () => {
-
+    //console.log(this.state.Reciver_User_ID)
     db.collection("UserInfo").where("Email", '==', this.state.Reciver_User_ID).get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -50,7 +50,7 @@ export default class Trade extends React.Component {
   }
 
   getUserName = (UserID) => {
-
+    //console.log(  UserID)
     db.collection("UserInfo").where('Email', "==", UserID).get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -72,9 +72,25 @@ export default class Trade extends React.Component {
       'BookName': this.state.Item_Name,
       'BookDefination': this.state.Item_Defination,
       'RequestedBy': this.state.Reciver_User_ID,
-      'DonorID': this.state.Item_ID,
-      'RequestStatus': this.state.User_Name + ' has shown interested',
-      'Donor': this.state.UserID
+      'ItemID': this.state.Item_ID,
+      'Donor': this.state.UserID,
+      'RequestStatus': 'Donor interested'
+    })
+  }
+
+  AddNotification = () => {
+
+    var Message = this.state.User_Name + ' Has shown interest in Donating';
+
+    db.collection("Notifications").add({
+
+      "UserID": this.state.UserID,
+      "ReciverID": this.state.Reciver_User_ID,
+      "Date": firebase.firestore.FieldValue.serverTimestamp(),
+      "NotificationStatus": "Unread",
+      'RequestID': this.state.Item_ID,
+      "Message": Message,
+      'BookName': this.state.Item_Name
     })
   }
 
@@ -151,6 +167,7 @@ export default class Trade extends React.Component {
                 < TouchableOpacity style={styles.button} onPress={() => {
 
                   this.AddBarter()
+                  this.AddNotification()
                   this.props.navigation.navigate("MyBarter")
                 }}>
 
